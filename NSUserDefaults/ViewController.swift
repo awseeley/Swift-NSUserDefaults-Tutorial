@@ -12,7 +12,7 @@ class ViewController: UIViewController {
 
     @IBOutlet var lblData: UILabel!
     
-    let userDefaults = NSUserDefaults.standardUserDefaults()
+    let userDefaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,14 +24,14 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func btnSave(sender: AnyObject) {
+    @IBAction func btnSave(_ sender: AnyObject) {
         let data = "Hello"
-        userDefaults.setObject(data, forKey: "keyHello")
+        userDefaults.set(data, forKey: "keyHello")
     }
     
-    @IBAction func btnLoad(sender: AnyObject) {
+    @IBAction func btnLoad(_ sender: AnyObject) {
         
-        let data: String? = userDefaults.objectForKey("keyHello") as! String?
+        let data: String? = userDefaults.object(forKey: "keyHello") as! String?
         if(data != nil) {
             lblData.text = data
         } else {
